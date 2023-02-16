@@ -4,13 +4,14 @@
 Install my-project with virtualenv
 
 ```bash
-  #If you don't have the 'virtualenv' module installed use: pip install virtualenv
-  virtualenv venv --python=python3.8.10
+  1. pip install virtualenv
+  2. virtualenv venv --python=python3.8.10
   #windows:
-  venv\scripts\activate
+  3. venv\scripts\activate
   #linux:
-  source venv/bin/activate
-  pip install -r requirements.txt
+  3. source venv/bin/activate
+
+  4. pip install -r requirements.txt
 ```
 
 ## Authors
