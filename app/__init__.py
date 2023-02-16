@@ -1,6 +1,7 @@
 from flask import Flask, jsonify
 from .config import app_config
 from flask_cors import CORS
+from .v1 import v1_attach_apis 
 
 def create_app(config_name="development"):
     app = Flask(__name__)
@@ -9,9 +10,7 @@ def create_app(config_name="development"):
 
     CORS(app, resources={r"/*": {"origins": "*"}})
 
-    @app.route("/frank")
-    def route_test():
-        return "<p> Frank el dios del backend <p>"
+    app = v1_attach_apis(app)
 
     @app.errorhandler(404)
     def page_not_found(err):
