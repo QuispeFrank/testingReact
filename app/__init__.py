@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 from flask import Flask, jsonify
 from .config import app_config # diccionario con las clases de configuracion para la app 
 from flask_cors import CORS
@@ -8,7 +9,7 @@ def create_app(config_name="development"):
 
     app.config.from_object(app_config[config_name]) # agregando la configuracion a la app
 
-    CORS(app, resources={r"/*": {"origins": "*"}})
+    CORS(app, resources={r"/*": {"origins": "*"}}) # agregando la seguridad
 
     app = v1_attach_apis(app) # agregando los blueprint a la app
 
