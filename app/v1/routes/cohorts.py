@@ -152,3 +152,8 @@ def grabar_asistencia():
 
     return jsonify(data_from_react), 200
                    
+
+@cohorts_api.route('/eliminar-asistencias',
+                   methods=['GET'])
+def eliminar_asistencias():
+    return jsonify('por definir'), 200
