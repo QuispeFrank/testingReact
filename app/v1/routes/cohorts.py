@@ -102,6 +102,11 @@ def all_attendance_by_cohort_and_date(id, date, turn):
 @cohorts_api.route('/grabar-asistencia',
                    methods=['GET'])
 def actualizar_asistencia_participacion():
+    """
+    endpoint que recibe informacion desde react el cual se desea
+    actualizar en la base de datos con respecto a las asistencias
+    y participaciones de uno o mas alumnos
+    """
     data_from_react = [{
         'id_detalle_a_p': 2000,
         'id_alumno': 4335,
