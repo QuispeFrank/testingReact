@@ -1,0 +1,12 @@
+DROP DATABASE IF EXISTS INTRANET;
+CREATE DATABASE IF NOT EXISTS INTRANET;
+USE INTRANET;
+
+DROP TABLE IF EXISTS alumnos_asistencia_participacion;
+DROP TABLE IF EXISTS alumnos_evaluacion_oral;
+DROP TABLE IF EXISTS evaluacion_oral;
+DROP TABLE IF EXISTS asistencias_participaciones;
+DROP TABLE IF EXISTS alumnos;
+DROP TABLE IF EXISTS cohortes;
+DROP TABLE IF EXISTS usuarios;
+DROP TABLE IF EXISTS roles;
