@@ -99,7 +99,8 @@ def all_attendance_by_cohort_and_date(id, date, turn):
 
 
 # cambiar a el metodo a UPD
-@cohorts_api.route('/grabar-asistencia',
+# cambiar por grabar-asistencia
+@cohorts_api.route('/actualizar-asistencia',
                    methods=['GET'])
 def actualizar_asistencia_participacion():
     """
@@ -123,3 +124,31 @@ def actualizar_asistencia_participacion():
     }]
 
     return jsonify(data_from_react), 200
+
+
+# cambiar a el metodo a POST
+@cohorts_api.route('/grabar-asistencia',
+                   methods=['GET'])
+def grabar_asistencia():
+    data_from_react = {
+        'cohort': 19,
+        'fecha': '14/02/2023',
+        'sesion': 'diurno',
+        'trimestre': 1,
+        'alumnos': [{
+            'id': 4335,
+            'asistencia': True,
+            'participacion': 3
+        }, {
+            'id': 5432,
+            'asistencia': True,
+            'participacion': 10
+        }, {
+            'id': 3333,
+            'asistencia': True,
+            'participacion': 20
+        }]
+    }
+
+    return jsonify(data_from_react), 200
+                   
