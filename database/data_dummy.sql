@@ -1611,7 +1611,6 @@ VALUES
 
 INSERT INTO alumnos_evaluacion_oral
 	(id_eval, id_alumno, asistencia, nota, observacion)
-	(7, 23, 1, 0, 0),
 VALUES
 	(1, 23, 1, 56, ''),
 	(1, 16, 1, 68, ''),
