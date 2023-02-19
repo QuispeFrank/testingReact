@@ -1,7 +1,8 @@
+#!/usr/bin/python3
 from os import getenv
 
 
-class Config(object):
+class Config():
     """Parent configuration class."""
     DEBUG = False
     TESTING = False
