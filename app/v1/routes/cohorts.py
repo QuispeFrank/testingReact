@@ -71,6 +71,7 @@ def all_attendance_by_cohort_and_date(id, date, turn):
     """
     all_data = {
         'cohort': 19,
+        'id_detalle_a_p': 2000,
         'fecha': '07/02/2023',
         'sesion': 'diurno',
         'trimestre': 1,
@@ -95,3 +96,25 @@ def all_attendance_by_cohort_and_date(id, date, turn):
         }]
     }
     return jsonify(all_data), 200
+
+
+# cambiar a el metodo a UPD
+@cohorts_api.route('/grabar-asistencia',
+                   methods=['GET'])
+def actualizar_asistencia_participacion():
+    data_from_react = [{
+        'id_detalle_a_p': 2000,
+        'id_alumno': 4335,
+        'asistencia': True,
+        'participacion': 0,
+        'participaciones': 0
+    }, {
+        'id_detalle_a_p': 2000,
+        'id_alumno': 5432,
+        'asistencia': True,
+        'participacion': 1,
+        'participaciones': 7
+
+    }]
+
+    return jsonify(data_from_react), 200
