@@ -1,0 +1,3 @@
+
+class CohortesData():
+    pass
