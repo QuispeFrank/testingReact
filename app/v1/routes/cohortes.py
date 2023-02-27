@@ -1,0 +1,183 @@
+#!/usr/bin/python3
+from flask import Blueprint, jsonify, abort
+from ..data.cohortes import CohortesData
+import app.v1.controllers.c_cohortes as Controller_cohortes
+
+cohortes_api = Blueprint('cohortes', __name__)
+
+@cohortes_api.route('/all', methods=['GET'])
+def all_cohortes():
+    """
+    Devuelve informacion basica de todas las cohorts
+    existentes en bd
+    """
+    rtn = Controller_cohortes.cohortes_all()
+    return jsonify(rtn), 200
+
+@cohortes_api.route('/<cohort_id>/alumnos', methods=['GET'])
+def all_alumnos_from_cohort(cohort_id):
+    """
+    Devuleve todos los alumnos de una cohort
+    """
+    check = Controller_cohortes.check_alumnos(cohort_id)
+    if check is None:
+        return abort(404)
+
+    return jsonify(check), 200
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# @cohorts_api.route('/<int:id>/asistencia-participacion', methods=['GET'])
+# def all_asistencias_by_cohort_and_date(id):
+#     """
+#     Devuelve los ultimos historiales de asistencias y participaciones
+#     de la cohort especificada
+#     """
+#     all_data = {
+#         'cohort': 19,
+#         'asistencias': [{
+#             'fecha': '07/02/2023',
+#             'trimestre': 1,
+#             'sesion': 'diurno',
+#             'asistentes': 19,
+#             'participaciones': 30
+#         }, {
+#             'fecha': '05/02/2023',
+#             'trimestre': 1,
+#             'sesion': 'diurno',
+#             'asistentes': 19,
+#             'participaciones': 30
+#         }, {
+#             'fecha': '28/01/2023',
+#             'trimestre': 1,
+#             'sesion': 'diurno',
+#             'asistentes': 19,
+#             'participaciones': 30
+#         }]
+#     }
+#     return jsonify(all_data), 200
+
+
+# @cohorts_api.route('/<int:id>/asistencia-participacion/<date>/<sesion>',
+#                    methods=['GET'])
+# def all_attendance_by_cohort_and_date(id, date, turn):
+#     """
+#     obtiene todas las participaciones y asistencias de todos los alumnos
+#     de una cohort, en una respectiva fecha y turno
+#     """
+#     all_data = {
+#         'cohort': 19,
+#         'id_detalle_a_p': 2000,
+#         'fecha': '07/02/2023',
+#         'sesion': 'diurno',
+#         'trimestre': 1,
+#         'alumnos': [{
+#             'id': 4335,
+#             'firstname': 'Frank',
+#             'lastname': 'Quispe',
+#             'asistencia': True,
+#             'participacion': 5
+#         }, {
+#             'id': 5432,
+#             'firstname': 'Dany',
+#             'lastname': 'Chavez',
+#             'asistencia': False,
+#             'participacion': 0
+#         }, {
+#             'id': 3333,
+#             'firstname': 'John',
+#             'lastname': 'Chavez',
+#             'asistencia': True,
+#             'participacion': 5
+#         }]
+#     }
+#     return jsonify(all_data), 200
+
+
+# # cambiar a el metodo a UPD
+# # cambiar por grabar-asistencia
+# @cohorts_api.route('/actualizar-asistencia',
+#                    methods=['GET'])
+# def actualizar_asistencia_participacion():
+#     """
+#     endpoint que recibe informacion desde react el cual se desea
+#     actualizar en la base de datos con respecto a las asistencias
+#     y participaciones de uno o mas alumnos
+#     """
+#     data_from_react = [{
+#         'id_detalle_a_p': 2000,
+#         'id_alumno': 4335,
+#         'asistencia': True,
+#         'participacion': 0,
+#         'participaciones': 0
+#     }, {
+#         'id_detalle_a_p': 2000,
+#         'id_alumno': 5432,
+#         'asistencia': True,
+#         'participacion': 1,
+#         'participaciones': 7
+
+#     }]
+
+#     return jsonify(data_from_react), 200
+
+
+# # cambiar a el metodo a POST
+# @cohorts_api.route('/grabar-asistencia',
+#                    methods=['GET'])
+# def grabar_asistencia():
+#     data_from_react = {
+#         'cohort': 19,
+#         'fecha': '14/02/2023',
+#         'sesion': 'diurno',
+#         'trimestre': 1,
+#         'alumnos': [{
+#             'id': 4335,
+#             'asistencia': True,
+#             'participacion': 3
+#         }, {
+#             'id': 5432,
+#             'asistencia': True,
+#             'participacion': 10
+#         }, {
+#             'id': 3333,
+#             'asistencia': True,
+#             'participacion': 20
+#         }]
+#     }
+
+#     return jsonify(data_from_react), 200
+                   
+
+# @cohorts_api.route('/eliminar-asistencias',
+#                    methods=['GET'])
+# def eliminar_asistencias():
+#     return jsonify('por definir'), 200
