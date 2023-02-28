@@ -1,0 +1,15 @@
+You must copy this file and rename it to .env:
+tail -n 7 your_env.txt > .env
+ -next edit and save your credentianls in .env
+
+ -don't include .env file into git stage
+ -don't delete your_env.txt
+
+
+INT_MYSQL_HOST="localhost"
+INT_MYSQL_USER="your database user"
+INT_MYSQL_PASSWORD="your password"
+INT_MYSQL_DB="your database name"
+INT_SERVER_HOST="127.0.0.1"
+INT_SERVER_PORT="5000"
+INT_SERVER_NAME="127.0.0.1:5000"
