@@ -1,25 +1,25 @@
 #!/usr/bin/python3
 from flask import Blueprint, jsonify, abort
-from ..data.cohortes import CohortesData
+from ..data.cohortes_data import CohortesData
 import app.v1.controllers.c_cohortes as Controller_cohortes
 
 cohortes_api = Blueprint('cohortes', __name__)
 
 @cohortes_api.route('/all', methods=['GET'])
-def all_cohortes():
+def cohortes():
     """
     Devuelve informacion basica de todas las cohorts
     existentes en bd
     """
-    rtn = Controller_cohortes.cohortes_all()
+    rtn = Controller_cohortes.all_cohortes()
     return jsonify(rtn), 200
 
-@cohortes_api.route('/<cohort_id>/alumnos', methods=['GET'])
-def all_alumnos_from_cohort(cohort_id):
+@cohortes_api.route('/<cohorte_id>/alumnos', methods=['GET'])
+def alumnos_cohorte(cohorte_id):
     """
     Devuleve todos los alumnos de una cohort
     """
-    check = Controller_cohortes.check_alumnos(cohort_id)
+    check = Controller_cohortes.verificar_alumnos(cohorte_id)
     if check is None:
         return abort(404)
 

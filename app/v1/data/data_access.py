@@ -39,25 +39,21 @@ class DataAccess:
                 cnn.close()
         return { 'result': rtn, 'params': args }
     
-    def ExecuteProdure(self, procedureName, params):
+    def ExecuteProdure(self, procedureName, params=[]):
         args = params
+        last_id = None
         try:
             cnn = self.connector()
             cursor = cnn.cursor()
-            args = cursor.callproc(procedureName, params)
+            args = cursor.callproc(procedureName, args)
             cnn.commit()
+            # obtener el id del registro creado
+            cursor.execute("SELECT LAST_INSERT_ID();")
+            last_id = cursor.fetchone()[0]
             cursor.close()
         except Error as e:
             print(e) 
         finally:
             if (cnn and cnn.is_connected()):
                 cnn.close()
-        return { 'params': args }
-    
-
-
-# procedure = "usp__cohortes_s_cohortes"
-# instance = DataAccess()
-# data = instance.ExecuteSelectProdure(procedure)
-# dataserialize = json.dumps(data['result'])
-# print(dataserialize)
+        return { 'params': args, 'id': last_id }

@@ -1,15 +1,15 @@
 DELIMITER $$
-DROP PROCEDURE IF EXISTS `usp_cohortes_s_all`$$
+DROP PROCEDURE IF EXISTS `usp_all_cohortes`$$
 
 /*
     AUTHOR:         Dany Chavez
     DATE:           19/02/2023
-    DESCRIPTION:    Returns the list of the all cohorts
+    DESCRIPTION:    Retorna la lista de todas las cohortes
     EXAMPLE:
-        CALL usp_cohortes_s_cohortes();
+        CALL usp_all_cohortes();
 */
 
-CREATE PROCEDURE usp_cohortes_s_all()
+CREATE PROCEDURE usp_all_cohortes()
 BEGIN
 
     SELECT 

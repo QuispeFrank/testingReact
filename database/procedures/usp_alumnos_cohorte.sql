@@ -1,23 +1,24 @@
 DELIMITER $$
-DROP PROCEDURE IF EXISTS `usp_cohorte_s_alumnos`$$
+DROP PROCEDURE IF EXISTS `usp_alumnos_cohorte`$$
 
 /*
     AUTHOR:         Dany Chavez
     DATE:           21/02/2023
-    DESCRIPTION:    Returns the list of students of a specific cohort
+    DESCRIPTION:    Retorna la lista de alumnos en una cohorte
     EXAMPLE:
-        CALL usp_cohortes_s_cohortes(286);
+        CALL usp_alumnos_cohorte(286);
 */
 
-CREATE PROCEDURE usp_cohorte_s_alumnos(
-    IN cohort_id INT
+CREATE PROCEDURE usp_alumnos_cohorte(
+    IN cohorte_id INT
 )
 BEGIN
 
     SELECT
         alumnos.id_alumno,
         usuarios.first_name,
-        usuarios.last_name
+        usuarios.last_name,
+        usuarios.id_usuario
     FROM
         alumnos
     INNER JOIN
@@ -25,7 +26,7 @@ BEGIN
     ON
         alumnos.id_usuario = usuarios.id_usuario
     WHERE
-        alumnos.id_cohorte = cohort_id;
+        alumnos.id_cohorte = cohorte_id;
 END$$
 
 DELIMITER ;
