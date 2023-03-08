@@ -1,13 +1,12 @@
 from ..data.asistencias_data import AsistenciasData
 
-def obtener_registro_asistencias(cohorte_id):
+def obtener_registros_asistencias(cohorte_id):
     o_asistencias = AsistenciasData()
     registros = o_asistencias.listar_registros_a_p(cohorte_id)
 
     for registro in registros:
         id_asis = registro['id_asis']
         asistencias_participaciones = o_asistencias.contar_participaciones_alumnos(id_asis)
-        #print(registro)
         for key, value in asistencias_participaciones[0].items():
             registro[key] = value
 
@@ -17,16 +16,16 @@ def obtener_registro_asistencias(cohorte_id):
 def check_nuevo_registro(content):
     o_asistencias = AsistenciasData()
 
-    id_cohorte = content['data_registro']['id_cohorte']
-    fecha = content['data_registro']['fecha']
-    trimestre = content['data_registro']['trimestre']
-    sesion = content['data_registro']['sesion']
+    id_cohorte = content[0]['data_registro']['id_cohorte']
+    fecha = content[0]['data_registro']['fecha']
+    trimestre = content[0]['data_registro']['trimestre']
+    sesion = content[0]['data_registro']['sesion']
 
     # se crea un registro en la tabla asistencias_particiones
     registro = o_asistencias.crear_registro_a_p([id_cohorte, trimestre, sesion, fecha])
     
     # Iteramos cada dato de alumno y lo agregamos a la tabla alumnos_asistenci, participación
-    for alumno in content['data_alumnos']:
+    for alumno in content[0]['data_alumnos']:
         id_asis = registro['id']
         id_alumno = alumno['id_alumno']
         asistencia = alumno['asistencia']
@@ -36,3 +35,14 @@ def check_nuevo_registro(content):
 
     return registro['id']
 
+
+def obtener_registro_asistencia(id_asis):
+    o_asistencias = AsistenciasData()
+    data_registro = o_asistencias.obtener_registro_a_p(id_asis)
+    data_alumnos = o_asistencias.data_alumnos_obtener_registro_a_p(id_asis)
+    new_dict = {
+        'data_registro': data_registro[0],
+        'data_alumnos': data_alumnos
+    }
+
+    return [new_dict]

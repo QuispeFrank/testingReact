@@ -45,3 +45,22 @@ class AsistenciasData(DataAccess):
         parametros = params
         self.ExecuteProdure(procedure, parametros)
         
+    def obtener_registro_a_p(self, asist_id):
+        """
+        Obtiene los datos de un registro en específico por el `id_asis`
+        """
+        procedure = "usp_obtener_registro_a_p"
+        parametros = [asist_id]
+        data = self.ExecuteSelectProdure(procedure, parametros)
+        arr = data['result']
+        return arr
+    
+    def data_alumnos_obtener_registro_a_p(self, asist_id):
+        """
+        Obtiene los datos de alumnos en un registro especifico por el `id_asis`
+        """
+        procedure = "usp_obtener_alumnos_registro_a_p"
+        parametros = [asist_id]
+        data = self.ExecuteSelectProdure(procedure, parametros)
+        arr = data['result']
+        return arr
