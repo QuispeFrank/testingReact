@@ -22,7 +22,7 @@ BEGIN
     FROM
         asistencias_participaciones
     where
-        id_asis = p_id_asis;
+        id_asis = p_id_asis and eliminado = 0;
 END$$
 
 DELIMITER ;

@@ -23,7 +23,7 @@ BEGIN
     FROM
         asistencias_participaciones
     where
-        id_cohorte = cohorte_id;
+        id_cohorte = cohorte_id and eliminado = 0;
 END$$
 
 DELIMITER ;

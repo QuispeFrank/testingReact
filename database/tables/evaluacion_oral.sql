@@ -14,6 +14,7 @@ CREATE TABLE evaluacion_oral (
 	updated_at timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL, -- Fecha de última actualización de la evaluación
 	created_by int DEFAULT NULL, -- Identificador del usuario que creó esta evaluación
 	updated_by int DEFAULT NULL, -- Identificador del usuario que actualizó esta evaluación
+    eliminado tinyint DEFAULT 0 NOT NULL,
     PRIMARY KEY (id_eval), -- Clave primaria de la tabla
     CONSTRAINT evaluacion_oral_ibfk_1 FOREIGN KEY (id_cohorte) -- Clave foránea que relaciona la evaluación con su cohorte
     REFERENCES cohortes (id_cohorte) ON DELETE CASCADE,

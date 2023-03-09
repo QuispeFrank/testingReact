@@ -64,3 +64,27 @@ class AsistenciasData(DataAccess):
         data = self.ExecuteSelectProdure(procedure, parametros)
         arr = data['result']
         return arr
+    
+    def actualizar_registro_a_p(self, params):
+        """
+        Actualiza un registro a_p
+        """
+        procedure = "usp_actualizar_registro_a_p"
+        parametros = params
+        self.ExecuteProdure(procedure, parametros)
+
+    def actualizar_alumno_registro_a_p(self, params):
+        """
+        Actualiza un alumno registro a_p
+        """
+        procedure = "usp_actalizar_alumnos_registro_a_p"
+        parametros = params
+        self.ExecuteProdure(procedure, parametros)
+
+    def eliminar_registro_a_p(self, id_asis):
+        """
+        Elimina un registro 
+        """
+        procedure = "usp_eliminar_registro_a_p"
+        parametros = [id_asis]
+        self.ExecuteProdure(procedure, parametros)

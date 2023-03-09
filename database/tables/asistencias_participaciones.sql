@@ -15,6 +15,7 @@ CREATE TABLE asistencias_participaciones (
 	updated_at timestamp DEFAULT CURRENT_TIMESTAMP NOT NULL, -- Fecha de última actualización de la asistencia/participación
 	created_by int DEFAULT NULL, -- Identificador del usuario que creó esta asistencia/participación
 	updated_by int DEFAULT NULL, -- Identificador del usuario que actualizó esta asistencia/participación
+    eliminado tinyint DEFAULT 0 NOT NULL,
     PRIMARY KEY (id_asis), -- Clave primaria de la tabla
     CONSTRAINT asistencias_participaciones_ibfk_1 FOREIGN KEY (id_cohorte) -- Clave foránea que relaciona la asistencia/participación con su cohorte
     REFERENCES cohortes (id_cohorte) ON DELETE CASCADE,

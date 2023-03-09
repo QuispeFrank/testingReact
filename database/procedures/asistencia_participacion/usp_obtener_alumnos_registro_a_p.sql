@@ -15,9 +15,10 @@ CREATE PROCEDURE usp_obtener_alumnos_registro_a_p(
 BEGIN
 
     SELECT
+    alumnos.id_alumno,
     usuarios.first_name,
     usuarios.last_name,
-    alumnos.id_alumno,
+    alumnos_asistencia_participacion.id_alumnos_a_p,
     alumnos_asistencia_participacion.asistencia,
     alumnos_asistencia_participacion.participacion,
     alumnos_asistencia_participacion.nro_participaciones
