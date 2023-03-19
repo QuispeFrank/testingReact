@@ -8,6 +8,7 @@ class Evaluaciones extends Component {
           <h1> me extrañabas? </h1>
           <p> asi es estas en evaluaciones felicidades!! </p>
           <Link to={`/`}>Volver</Link>
+          {console.log('EVALUACONES EJECUTADAS:')}
         </div>
         );
     }

@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&family=Playfair+Display&display=swap');
+* {
+  font-family: 'Comfortaa', cursive;
+}
+
+body {
+  cursor: url('../../assets/cursor/arrow.gif'), auto;
+}
+
+.asistencias {
+  width: 1000px;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  /* box-shadow: 0 3px 6px black; */
+  box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.4);
+  padding: 50px;
+  border-radius: 10px;
+}
+
+
+table {
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: center;
+  padding: 8px;
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1.5;
+  width: 10em;
+  padding: 1em;
+}
+
+th {
+  background-color: #525252;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #e31d3f;
+  color: white;
+}
+
+td, th {
+  border-top: 1px solid black;
+  border-bottom: 1px solid rgb(210, 192, 192);
+}
+
+.buttons {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.buttons button {
+  text-align: center;
+  cursor: alias;
+  margin: 5px;
+  padding: 10px;
+  cursor: url('../../assets/cursor/cursor_link.gif'), auto;
+  border-radius: 5px;
+  color: white;
+}
+
+/* 1. cursor personalizado */
+.cursor-custom {
+  cursor: url('../../assets/cursor/cursor_link.gif'), auto;
+}
